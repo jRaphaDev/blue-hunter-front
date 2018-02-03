@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http';
 
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -12,8 +12,6 @@ import { BookComponent } from './book/book.component';
 
 import { UserService } from './user/user.service';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,10 +22,11 @@ import { UserService } from './user/user.service';
     AlertModule.forRoot(),
     TabsModule.forRoot(),
     HttpModule,
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule
   ],
   providers: [ UserService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

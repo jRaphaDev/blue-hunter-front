@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
 import { UserService } from './user.service';
+import { User } from './user';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -8,22 +12,20 @@ import { UserService } from './user.service';
 })
 export class UserComponent implements OnInit {
 
-  name;
+  public users: Observable<User[]>;
+
+  public nameSearch: FormControl;
   
   constructor(private userService: UserService) { 
     this.userService = userService;
   }
 
   ngOnInit() {
+    this.nameSearch = new FormControl();
   }
 
   search() {
-    console.log(this.name, 'user ');
-    this.userService.findUserByName(this.name)
-      .subscribe(
-        users => console.log(users, ' users'),
-        error => console.log(error, ' error')
-      )
+    this.users = this.userService.findUserByName(this.nameSearch.value)
   }
 
 }

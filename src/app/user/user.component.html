@@ -1,17 +1,37 @@
 <div class="container">
-  <div class="row">
 
-    <div class="col">
-      <input type="text" class="form-control form-control-lg" 
-        placeholder="Digite o nome do usuário"
-        [(ngModel)]="name">
+  <form >
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control form-control-lg" 
+          placeholder="Digite o nome do usuário"
+          [formControl]="nameSearch">
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-lg"
+          [disabled]="!nameSearch.value"
+          (click)="search()"> Search </button>
+      </div>
     </div>
+  </form>
   
-    <div class="col-2">
-      <button type="button" class="btn btn-primary btn-lg"
-        [disabled]="disabled"
-        (click)="search()">Search</button>
-    </div>
-
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Password</th>
+          <th scope="col">Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | async">
+          <td>{{ user.name }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.admin }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </div>
