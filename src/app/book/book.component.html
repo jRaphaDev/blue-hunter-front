@@ -1,3 +1,33 @@
-<p>
-  book works!
-</p>
+<div class="container">
+  <form >
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control form-control-lg" 
+          placeholder="Digite o nome do usuário"
+          [formControl]="titleSearch">
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-primary btn-lg"
+          [disabled]="!titleSearch.value"
+          (click)="searchByTitle()"> Search </button>
+      </div>
+    </div>
+  </form>
+  
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books | async">
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { BookComponent } from './book/book.component';
 
 import { UserService } from './user/user.service';
+import { BookService } from './book/book.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,10 @@ import { UserService } from './user/user.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [ UserService ],
+  providers: [ 
+    UserService, 
+    BookService 
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
